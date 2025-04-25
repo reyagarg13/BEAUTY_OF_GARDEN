@@ -81,4 +81,3 @@ def max_beauty_garden(flowers):
         "end_index": end_idx,
         "visual_data": visual_data
     }
-    
