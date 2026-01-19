@@ -109,12 +109,13 @@ with st.sidebar:
     
     # Toggle dark mode
     def toggle_dark_mode():
-        st.session_state.dark_mode = not st.session_state.dark_mode
+        # Use .get with a default to avoid AttributeError during callbacks
+        st.session_state['dark_mode'] = not st.session_state.get('dark_mode', False)
     
-    dark_mode_label = "🌙 Switch to Light Mode" if st.session_state.dark_mode else "🌞 Switch to Dark Mode"
+    dark_mode_label = "🌙 Switch to Light Mode" if st.session_state.get('dark_mode', False) else "🌞 Switch to Dark Mode"
     st.button(dark_mode_label, on_click=toggle_dark_mode)
     
-    if st.session_state.dark_mode:
+    if st.session_state.get('dark_mode', False):
         st.markdown("""
             <style>
                 .main {
